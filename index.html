@@ -3,47 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Manifiesto Global del Instante</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Mi Nuevo Manifiesto</title> <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <header>
-        <h1>El Manifiesto Global del Instante</h1>
-        <p>Captura y comparte tu micro-percepción del ahora.</p>
-        <button id="captureButton">¡Captura tu Instante!</button>
+    <header class="cabecera">
+        <div class="contenedor-cabecera">
+            <h1>El Lugar de los Instantes</h1> <p>Tu rincón para compartir el momento presente.</p> <button id="abrirModal" class="boton-capturar">¡Comparte tu Instante!</button> </div>
     </header>
 
-    <main id="manifestContainer">
-        <p>Cargando instantes...</p>
+    <main class="contenedor-principal">
+        <section id="galeria-instantes" class="galeria-instantes">
+            <p id="mensaje-no-instantes" class="mensaje-vacio">Sé el primero en capturar un instante.</p>
+        </section>
     </main>
 
     <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Captura tu Instante</h2>
-            <form id="instantForm">
-                <input type="file" id="mediaFile" accept="image/*,video/*,audio/*">
-                <input type="text" id="phraseText" placeholder="O una frase (máx. 5 palabras)">
-                <select id="emotionTag" required>
-                    <option value="">Selecciona una emoción</option>
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <h2>Nuevo Instante</h2>
+            <form id="instanteForm">
+                <label for="imagen">Imagen:</label>
+                <input type="file" id="imagen" accept="image/*" required>
+
+                <label for="titulo">Descripción:</label>
+                <input type="text" id="titulo" placeholder="Ej: Atardecer en la playa..." required>
+
+                <label for="sentimiento">Sentimiento:</label>
+                <select id="sentimiento" required>
+                    <option value="">Selecciona un sentimiento</option>
+                    <option value="Alegria">Alegría</option>
                     <option value="Paz">Paz</option>
-                    <option value="Caos">Caos</option>
-                    <option value="Alegría">Alegría</option>
-                    <option value="Reflexión">Reflexión</option>
-                    <option value="Sorpresa">Sorpresa</option>
-                    <option value="Nostalgia">Nostalgia</option>
-                    <option value="Conexión">Conexión</option>
-                    <option value="Curiosidad">Curiosidad</option>
-                    </select>
-                <input type="text" id="locationText" placeholder="Ubicación (opcional, ej: Viedma, Argentina)">
-                <button type="submit">Enviar Manifiesto</button>
+                    <option value="Esperanza">Esperanza</option>
+                    <option value="Calma">Calma</option>
+                    <option value="Reflexion">Reflexión</option>
+                    <option value="Inspiracion">Inspiración</option>
+                </select>
+
+                <label for="ubicacion">Ubicación (opcional):</label>
+                <input type="text" id="ubicacion" placeholder="Ej: Viedma, Río Negro">
+
+                <button type="submit">Publicar Instante</button>
             </form>
         </div>
     </div>
 
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
-    <script src="script.js"></script
+    <script type="module" src="script.js"></script>
 </body>
 </html>
