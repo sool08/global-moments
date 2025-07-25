@@ -1,11 +1,6 @@
 /* Estilos Generales */
 body {
-    font-family: 'Roboto', sans-serif; /* Usando Google Fonts, si la agregaste en index.html */
-    margin: 0;
-    padding: 0;
-    background-color: #f0f2f5; /*rojo cereza*/
-    color: #333;
-    line-height: 1.6;
+    background-color: #f0f2f5; /* Este es un gris muy claro. Prueba con #e0e0e0 (gris un poco más oscuro), #f8f8f8 (casi blanco) o un color pastel suave como #e6f7ff (azul claro) */
 }
 
 .contenedor-principal {
