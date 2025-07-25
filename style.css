@@ -1,158 +1,245 @@
+/* Estilos Generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif; /* Usando Google Fonts, si la agregaste en index.html */
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f0f2f5; /* Un gris claro para el fondo */
     color: #333;
+    line-height: 1.6;
+}
+
+.contenedor-principal {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Cabecera */
+.cabecera {
+    background: linear-gradient(135deg, #6a0dad, #8a2be2); /* Degradado de morado a lila */
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cabecera h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.cabecera p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.boton-capturar {
+    background-color: #ff6f61; /* Coral vibrante */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.boton-capturar:hover {
+    background-color: #e05e50;
+    transform: translateY(-2px);
+}
+
+/* Galería de Instantes */
+.galeria-instantes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+.instante-tarjeta {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+    justify-content: space-between;
 }
 
-header {
-    background-color: #6a0dad; /* Púrpura */
-    color: white;
-    padding: 20px;
-    text-align: center;
+.instante-tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.instante-tarjeta img {
     width: 100%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #eee;
 }
 
-header h1 {
+.instante-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.instante-info h3 {
+    font-size: 1.4em;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #4a4a4a;
+}
+
+.instante-info p {
+    font-size: 0.95em;
+    color: #777;
     margin-bottom: 5px;
 }
 
-#captureButton {
-    background-color: #ff6347; /* Naranja rojizo */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
+.instante-info .ubicacion-fecha {
+    font-size: 0.85em;
+    color: #999;
+    margin-top: 10px;
 }
 
-#captureButton:hover {
-    background-color: #e55338;
-}
-
-#manifestContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
-    max-width: 1200px;
-    margin-top: 20px;
-}
-
-.instant-card {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    overflow: hidden;
+.mensaje-vacio {
     text-align: center;
-    padding-bottom: 15px;
-    position: relative;
+    font-size: 1.5em;
+    color: #888;
+    padding: 50px;
+    grid-column: 1 / -1; /* Centra el mensaje en la cuadrícula */
 }
 
-.instant-card img, .instant-card video, .instant-card audio {
-    max-width: 100%;
-    display: block;
-    margin: 0 auto;
-    height: 200px; /* Altura fija para la imagen/video */
-    object-fit: cover; /* Recorta la imagen para cubrir el espacio */
-}
-
-.instant-card p {
-    padding: 10px 15px 5px;
-    font-size: 1.1em;
-    margin: 0;
-    font-weight: bold;
-}
-
-.instant-card .details {
-    font-size: 0.9em;
-    color: #666;
-    padding: 0 15px;
-}
-
-/* Modal Styles */
+/* Modal (Formulario de Captura) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Posición fija para cubrir toda la pantalla */
+    z-index: 1000; /* Por encima de otros elementos */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite scroll si el contenido es muy largo */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semi-transparente */
+    display: flex; /* Para centrar el contenido */
+    align-items: center; /* Centrado vertical */
+    justify-content: center; /* Centrado horizontal */
 }
 
-.modal-content {
+.modal-contenido {
     background-color: #fefefe;
     margin: auto;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    max-width: 500px;
+    padding: 30px;
+    border-radius: 10px;
     width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     position: relative;
-    text-align: center;
+    animation: slideUp 0.3s ease-out; /* Animación de entrada */
 }
 
-.close-button {
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.cerrar-modal {
     color: #aaa;
-    float: right;
+    position: absolute;
+    top: 15px;
+    right: 25px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 15px;
+    transition: color 0.3s ease;
 }
 
-.close-button:hover,
-.close-button:focus {
-    color: black;
+.cerrar-modal:hover,
+.cerrar-modal:focus {
+    color: #333;
     text-decoration: none;
 }
 
-#instantForm input[type="file"],
-#instantForm input[type="text"],
-#instantForm select {
+.modal-contenido h2 {
+    text-align: center;
+    color: #6a0dad;
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+
+.modal-contenido form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.modal-contenido form input[type="text"],
+.modal-contenido form select,
+.modal-contenido form input[type="file"] {
     width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 12px 10px;
+    margin-bottom: 20px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
     font-size: 1em;
 }
 
-#instantForm button[type="submit"] {
-    background-color: #4CAF50; /* Verde */
+.modal-contenido form button[type="submit"] {
+    background-color: #6a0dad; /* Morado del header */
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 25px;
+    font-size: 1.1em;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1em;
     transition: background-color 0.3s ease;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-#instantForm button[type="submit"]:hover {
-    background-color: #45a049;
+.modal-contenido form button[type="submit"]:hover {
+    background-color: #5a0bae;
 }
 
-/* Media Queries for Responsiveness */
+/* Media Queries para Responsive Design */
 @media (max-width: 768px) {
-    #manifestContainer {
-        grid-template-columns: 1fr; /* Una columna en pantallas pequeñas */
+    .cabecera h1 {
+        font-size: 2.5em;
+    }
+    .cabecera p {
+        font-size: 1em;
+    }
+    .galeria-instantes {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    .modal-contenido {
+        padding: 20px;
+    }
+    .modal-contenido h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .cabecera {
+        padding: 40px 10px;
+    }
+    .cabecera h1 {
+        font-size: 2em;
+    }
+    .boton-capturar {
+        padding: 12px 20px;
+        font-size: 1em;
+    }
+    .instante-tarjeta img {
+        height: 150px;
     }
 }
