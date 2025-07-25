@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Manifiesto Global del Instante</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>El Manifiesto Global del Instante</h1>
+        <p>Captura y comparte tu micro-percepción del ahora.</p>
+        <button id="captureButton">¡Captura tu Instante!</button>
+    </header>
+
+    <main id="manifestContainer">
+        <p>Cargando instantes...</p>
+    </main>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Captura tu Instante</h2>
+            <form id="instantForm">
+                <input type="file" id="mediaFile" accept="image/*,video/*,audio/*">
+                <input type="text" id="phraseText" placeholder="O una frase (máx. 5 palabras)">
+                <select id="emotionTag" required>
+                    <option value="">Selecciona una emoción</option>
+                    <option value="Paz">Paz</option>
+                    <option value="Caos">Caos</option>
+                    <option value="Alegría">Alegría</option>
+                    <option value="Reflexión">Reflexión</option>
+                    <option value="Sorpresa">Sorpresa</option>
+                    <option value="Nostalgia">Nostalgia</option>
+                    <option value="Conexión">Conexión</option>
+                    <option value="Curiosidad">Curiosidad</option>
+                    </select>
+                <input type="text" id="locationText" placeholder="Ubicación (opcional, ej: Viedma, Argentina)">
+                <button type="submit">Enviar Manifiesto</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
